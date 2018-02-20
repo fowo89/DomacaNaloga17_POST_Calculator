@@ -31,6 +31,27 @@ class MainHandler(BaseHandler):
     def get(self):
         return self.render_template("hello.html")
 
+class CalculateHandler(BaseHandler):
+    def post(self):
+        if self.request.get("operation") == "+":
+            result = float(self.request.get("1st_number")) + float(self.request.get("2nd_number"))
+        elif self.request.get("operation") == "-":
+            result = float(self.request.get("1st_number")) - float(self.request.get("2nd_number"))
+        elif self.request.get("operation") == "*":
+            result = float(self.request.get("1st_number")) * float(self.request.get("2nd_number"))
+        elif self.request.get("operation") == "/":
+            result = float(self.request.get("1st_number")) / float(self.request.get("2nd_number"))
+        else:
+            return self.render_template("Error.html")
+
+
+
+        podatki={"1st_number": self.request.get("1st_number"),
+                 "2nd_number": self.request.get("2nd_number"),
+                 "result": result}
+        return self.render_template("Result.html", podatki)
+
 app = webapp2.WSGIApplication([
     webapp2.Route('/', MainHandler),
+    webapp2.Route('/calculate', CalculateHandler),
 ], debug=True)

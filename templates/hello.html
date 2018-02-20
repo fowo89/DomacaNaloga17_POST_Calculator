@@ -2,11 +2,23 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>SmartNinja basic Jinja template</title>
+    <title>Calculator</title>
 
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-    <h1>Hello, SmartNinja!</h1>
+    <h2>Welcome  to the Calculator!</h2>
+    <form method="post" action="/calculate">
+        <label for = "input-1st_number">1st number: </label>
+        <input type="text" id="input-1st_number" name="1st_number">
+        <br>
+        <label for="input-2nd_number">2nd number: </label>
+        <input type="text" id="input-2nd_number" name="2nd_number">
+        <br>
+        <label for="operation">Choose operation (+, -, *, /): </label>
+        <input type="text" id="operation" name="operation">
+        <br>
+
+        <button type="submit">Calculate</button>
 </body>
 </html>
